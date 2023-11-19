@@ -1,0 +1,143 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.5'
+    id 'io.spring.dependency-management' version '1.1.0'
+
+	// for generating model classes using swagger yml
+	id "org.openapi.generator" version "6.6.0"
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "2022.0.4")
+}
+
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+def generated_dir ="$buildDir/jaxb"
+sourceSets {
+    generated {
+        java{
+            srcDir "$generated_dir"
+        }
+    }
+}
+
+// JAXB configuration holds classpath for running the JAXB XJC compiler
+configurations {
+    jaxb
+    test
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+    // The next two dependencies are not necessary for generating code, only when running the code:
+    // Generated code depends on the JAXB API, which is removed from base Java in JDK 11, and therefore needs to be added
+    implementation "org.glassfish.jaxb:jaxb-runtime:4.0.1"
+    implementation 'jakarta.xml.bind:jakarta.xml.bind-api:4.0.0' // In JAXB v3, 'javax.xml.bind' was moved to 'jakarta.xml.bind'
+
+    jaxb 'org.glassfish.jaxb:jaxb-xjc:4.0.1'
+    jaxb "org.glassfish.jaxb:jaxb-runtime:4.0.1"
+
+    // map struct
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+    annotationProcessor 'org.projectlombok:lombok-mapstruct-binding:0.2.0'
+
+    //actuator for micrometer
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // for aspect oriented programming
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation 'org.json:json:20231013'
+
+
+    // https://mvnrepository.com/artifact/com.squareup.okhttp3/mockwebserver
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
+
+
+
+}
+
+
+// Cookie cutter function for defining multiple XJC tasks
+def addXjcTask(taskName, schema, dest) {
+
+    // If you haven't already, create the generated output dir before running XJC or it will fail
+    file(dest).mkdirs()
+
+    // The main XJC task, calls XJCFacade which is the entry point of the XJC JAR
+    tasks.create(name: taskName, type: JavaExec) {
+        classpath configurations.jaxb
+        mainClass = 'com.sun.tools.xjc.XJCFacade'
+
+        // To explore available args, download the XJC JAR and run java -jar jaxb-xjc.jar --help
+        args schema, "-d", dest, "-no-header"
+    }
+}
+
+// Add all the XJC tasks you need
+addXjcTask("maven-xsd", "src/main/resources/xsd", "$generated_dir")
+
+
+tasks.register("generateSources") {
+    description "Generate Java sources fram XSD files"
+    dependsOn tasks.getByName("maven-xsd")
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+openApiGenerate {
+    generatorName = "spring"
+    inputSpec = "$rootDir/src/main/resources/oas.yml".toString()
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = "com.app.controller"
+    modelPackage = "com.app.dto"
+    apiFilesConstrainedTo = [""]
+    modelFilesConstrainedTo = [""]
+    supportingFilesConstrainedTo = ["ApiUtil.java"]
+    configOptions = [
+		serializableModel      : "true",
+		interfaceOnly          : "false",
+		hideGenerationTimestamp: "true",
+		openApiNullable        : "false",
+		java                   : "true",
+		dateLibrary            : "java8",
+		useSpringBoot3         : "true",
+		delegatePattern        : "false"
+    ]
+    validateSpec = true
+}
