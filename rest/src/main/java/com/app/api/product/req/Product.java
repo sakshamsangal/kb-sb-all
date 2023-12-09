@@ -1,4 +1,4 @@
-package com.app.product.req;
+package com.app.api.product.req;
 
 import lombok.*;
 

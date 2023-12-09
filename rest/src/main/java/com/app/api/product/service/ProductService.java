@@ -1,7 +1,9 @@
-package com.app.product.service;
+package com.app.api.product.service;
 
-import com.app.product.req.Product;
+import com.app.api.product.req.Product;
+import com.app.config.ExtProperty;
 import jakarta.annotation.PostConstruct;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +14,16 @@ import java.util.stream.IntStream;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class ProductService {
+
+    private final ExtProperty extProperty;
     List<Product> productList = null;
 
     @PostConstruct
     public void loadProductsFromDB() {
         log.info("OEI loadProductsFromDB");
-        productList = IntStream.rangeClosed(1, 10)
+        productList = IntStream.rangeClosed(1, extProperty.getProdRows())
                 .mapToObj(i -> Product.builder()
                         .productId(i)
                         .name("product " + i)
