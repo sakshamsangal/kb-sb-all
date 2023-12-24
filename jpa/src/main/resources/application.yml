@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/stud
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  pattern:
+    console: "%-5level | %-25.25logger{25} | %msg%n"
+
+prod:
+  rows: 4
+

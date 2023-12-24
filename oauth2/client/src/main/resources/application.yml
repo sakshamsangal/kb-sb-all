@@ -8,19 +8,20 @@ spring:
       client:
         provider:
           spring:
-            issuer-uri: http://localhost:8083
+            issuer-uri: http://auth-server:8083
         registration:
           client:
             client-id: client
             client-secret: secret
-            client-name: Login with My Auth Server ?
+            client-name: Login with My Auth Server
             provider: spring
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
-            scope: openid,profile
+            scope: profile
             authorization-grant-type: authorization_code
 
 
 logging:
   pattern:
     console: "%-5level | %-25.25logger{25} | %msg%n"
+
 #spring.security.oauth2.client.registration.client.client-authentication-method=client_secret_basic

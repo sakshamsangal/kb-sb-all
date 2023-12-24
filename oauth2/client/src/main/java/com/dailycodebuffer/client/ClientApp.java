@@ -9,7 +9,7 @@ import java.security.Principal;
 
 @SpringBootApplication
 @RestController
-public class SpringSsoGoogleApplication {
+public class ClientApp {
 
     @GetMapping
     public String welcome() {
@@ -24,7 +24,7 @@ public class SpringSsoGoogleApplication {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringSsoGoogleApplication.class, args);
+        SpringApplication.run(ClientApp.class, args);
     }
 
 }
