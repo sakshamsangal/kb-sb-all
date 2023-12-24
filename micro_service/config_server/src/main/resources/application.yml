@@ -1,0 +1,10 @@
+server:
+  port: 8088
+
+spring:
+  profiles:
+    active: native # default is git
+
+logging:
+  pattern:
+    console: "%-5level | %-25.25logger{25} | %msg%n"
