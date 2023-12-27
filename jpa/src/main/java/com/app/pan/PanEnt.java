@@ -1,4 +1,4 @@
-package com.app.model.pan;
+package com.app.pan;
 
 import jakarta.persistence.*;
 import lombok.Data;

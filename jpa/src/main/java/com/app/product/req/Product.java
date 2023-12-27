@@ -1,4 +1,4 @@
-package com.app.model.product.req;
+package com.app.product.req;
 
 import lombok.*;
 

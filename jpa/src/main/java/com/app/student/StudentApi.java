@@ -1,6 +1,6 @@
-package com.app.model.student;
+package com.app.student;
 
-import com.app.model.student.req.StudentApiReq;
+import com.app.student.req.StudentApiReq;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

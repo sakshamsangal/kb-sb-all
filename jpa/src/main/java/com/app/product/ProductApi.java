@@ -1,6 +1,6 @@
-package com.app.model.product;
+package com.app.product;
 
-import com.app.model.product.req.Product;
+import com.app.product.req.Product;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

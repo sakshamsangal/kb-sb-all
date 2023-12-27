@@ -1,6 +1,6 @@
-package com.app.model.student;
+package com.app.student;
 
-import com.app.model.pan.PanEnt;
+import com.app.pan.PanEnt;
 import jakarta.persistence.*;
 import lombok.Data;
 

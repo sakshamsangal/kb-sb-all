@@ -1,9 +1,9 @@
-package com.app.model.pan;
+package com.app.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PanRepository extends JpaRepository<PanEnt, Integer> {
+public interface StudentRepository extends JpaRepository<StudentEnt, Integer> {
 
 }

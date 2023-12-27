@@ -1,7 +1,6 @@
-package com.app.model.product;
+package com.app.product;
 
-import com.app.model.product.req.Product;
-import com.app.config.ConfigProperty;
+import com.app.product.req.Product;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,13 +16,12 @@ import java.util.stream.IntStream;
 @RequiredArgsConstructor
 public class ProductService {
 
-    private final ConfigProperty configProperty;
     List<Product> productList = null;
 
     @PostConstruct
     public void loadProductsFromDB() {
         log.info("OEI loadProductsFromDB");
-        productList = IntStream.rangeClosed(1, configProperty.getProdRows())
+        productList = IntStream.rangeClosed(1, 3)
                 .mapToObj(i -> Product.builder()
                         .productId(i)
                         .name("product " + i)

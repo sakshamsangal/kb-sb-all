@@ -1,4 +1,4 @@
-package com.app.model.student.req;
+package com.app.student.req;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,7 @@
-package com.app.model.student;
+package com.app.student;
 
-import com.app.model.student.req.StudentApiReq;
-import com.app.model.pan.PanEnt;
+import com.app.student.req.StudentApiReq;
+import com.app.pan.PanEnt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
