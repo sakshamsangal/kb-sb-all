@@ -1,4 +1,4 @@
-package com.app.model.weather.req;
+package com.app.model.product.req;
 
 import lombok.*;
 

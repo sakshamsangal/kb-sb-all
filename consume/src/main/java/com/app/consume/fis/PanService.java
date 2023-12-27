@@ -1,4 +1,4 @@
-package com.app.model.fis;
+package com.app.consume.fis;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -8,16 +8,15 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Slf4j
 @Service
-public class FisService {
+public class PanService {
 
     /**
      * api: post
      * sec: oauth2
      * body: form-data
-     *
      */
 
-    private void conGet() {
+    private void panApi() {
         log.info("conGet");
         String milkEndpoint = "https://jsonplaceholder.typicode.com/posts/2";
 
@@ -30,4 +29,5 @@ public class FisService {
                 .block();
         log.info(str);
     }
+
 }

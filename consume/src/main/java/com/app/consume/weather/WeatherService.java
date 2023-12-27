@@ -1,4 +1,4 @@
-package com.app.model.weather;
+package com.app.consume.weather;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

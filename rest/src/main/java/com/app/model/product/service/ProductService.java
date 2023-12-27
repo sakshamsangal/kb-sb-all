@@ -1,6 +1,6 @@
-package com.app.api.product.service;
+package com.app.model.product.service;
 
-import com.app.api.product.req.Product;
+import com.app.model.product.req.Product;
 import com.app.config.ExtProperty;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;

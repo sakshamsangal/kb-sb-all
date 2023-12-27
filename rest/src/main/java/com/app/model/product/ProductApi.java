@@ -1,9 +1,8 @@
-package com.app.api.product;
+package com.app.model.product;
 
-import com.app.api.product.req.Product;
-import com.app.api.product.service.ProductService;
+import com.app.model.product.req.Product;
+import com.app.model.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
