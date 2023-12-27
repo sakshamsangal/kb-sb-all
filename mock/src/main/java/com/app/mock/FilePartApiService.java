@@ -14,14 +14,15 @@ import java.nio.charset.StandardCharsets;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/v1")
+@RequestMapping("/v1/filePart")
 public class FilePartApiService {
+
     private final ExtField extField;
-    private final FileName fileName;
-    @GetMapping("/filePart")
+    private final MyFile myFile;
+    @GetMapping
     public ResponseEntity<String> filePart() throws IOException {
         Resource resource;
-        if (fileName.fn != null && fileName.fn.equals("0")) {
+        if (myFile.getFileName() != null && myFile.getFileName().equals("0")) {
             resource = extField.getFilePartErr();
         } else {
             resource = extField.getFilePartEmptyArr();
@@ -31,14 +32,14 @@ public class FilePartApiService {
                 .body(resource.getContentAsString(StandardCharsets.UTF_8));
     }
 
-    @GetMapping("/filePart/{status}")
+    @GetMapping("/{status}")
     public ResponseEntity<String> filePartStatus(@PathVariable String status) throws IOException {
         Resource resource;
         if (status.equals("0")) {
-            fileName.fn = "0";
+            myFile.setFileName("0");
             resource = extField.getFilePartErr();
         } else {
-            fileName.fn = "1";
+            myFile.setFileName("1");
             resource = extField.getFilePartEmptyArr();
         }
         return ResponseEntity.ok()
