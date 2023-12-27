@@ -1,4 +1,4 @@
-package com.app.api.product.req;
+package com.app.consume.weather.req;
 
 import lombok.*;
 
