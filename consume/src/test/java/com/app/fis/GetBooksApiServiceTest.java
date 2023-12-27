@@ -21,7 +21,7 @@ import java.io.IOException;
 class GetBooksApiServiceTest {
     private final MockWebServer mockWebServer = new MockWebServer();
     @Mock
-    private PageroExtField pageroExtField;
+    private ExtField pageroExtField;
     @InjectMocks
     private GetBooksApiService apiCaller;
 

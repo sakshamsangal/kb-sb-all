@@ -21,7 +21,7 @@ import java.io.IOException;
 class PostFileApiServiceTest {
     private final MockWebServer mockWebServer = new MockWebServer();
     @Mock
-    private PageroExtField pageroExtField;
+    private ExtField pageroExtField;
     @InjectMocks
     private PostFileApiService apiCaller;
 
