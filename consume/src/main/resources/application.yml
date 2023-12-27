@@ -1,7 +1,12 @@
-
 logging:
   pattern:
     console: "%-5level | %-25.25logger{25} | %msg%n"
 
-prod:
-  rows: 4
+product:
+  row: 4
+
+fis:
+  baseUrl: https://jsonplaceholder.typicode.com
+  postFileUri: /posts
+  books: /posts/2
+
