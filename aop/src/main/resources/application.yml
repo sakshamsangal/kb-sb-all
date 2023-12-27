@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+logging:
+  pattern:
+    console: "%-5level | %-25.25logger{25} | %msg%n"
+
+prod:
+  rows: 4
+

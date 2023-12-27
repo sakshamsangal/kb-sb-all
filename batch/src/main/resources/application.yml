@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+logging:
+  pattern:
+    console: "%-5level | %-25.25logger{25} | %msg%n"
+
+prod:
+  rows: 4
+
+spring:
+  datasource:
+    password: root
+    url: jdbc:mysql://localhost:3306/sms
+    username: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
+    # disabled job run at startup
+    job:
+      enabled: false
