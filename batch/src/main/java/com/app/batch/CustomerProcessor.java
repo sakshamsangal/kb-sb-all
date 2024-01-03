@@ -2,7 +2,7 @@ package com.app.batch;
 
 import org.springframework.batch.item.*;
 
-public class CustomerProcessor implements ItemProcessor<Customer, Customer> {
+public class  CustomerProcessor implements ItemProcessor<Customer, Customer> {
 
     @Override
     public Customer process(Customer customer) throws Exception {
