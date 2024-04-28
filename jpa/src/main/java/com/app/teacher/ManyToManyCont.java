@@ -7,10 +7,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//curl --location --request GET 'http://localhost:8080/teacher/course' \
+//--header 'Content-Type: application/json' \
+//--header 'Authorization: Basic YWRtaW4tY2xpZW50OnBhc3M=' \
+//--data '{
+//    "name": "sak1",
+//    "age": 12,
+//    "dept": "CS",
+//    "courses": [
+//        {
+//            "title": "t2",
+//            "abbreviation":"abr",
+//            "modules": 12,
+//            "fee":123.2
+//        }
+//    ]
+//}'
 @RestController
 @RequestMapping("/teacher/course")
 @RequiredArgsConstructor
-public class TeacherCourseController {
+public class ManyToManyCont {
 
     private final TeacherRepository teacherRepository;
 

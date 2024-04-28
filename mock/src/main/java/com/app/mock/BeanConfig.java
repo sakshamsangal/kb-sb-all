@@ -1,14 +1,19 @@
 package com.app.mock;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
-@Configuration
+
+@Component
+@ConfigurationProperties(prefix = "db")
+@RefreshScope
 public class BeanConfig {
 
     @Bean
-    public MyFile fileName() {
-        return new MyFile();
+    public ResType fileName() {
+        return new ResType();
     }
 
 

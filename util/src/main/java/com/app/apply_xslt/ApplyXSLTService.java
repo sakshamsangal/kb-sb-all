@@ -1,5 +1,8 @@
-package com.app.util.util.apply;
+package com.app.apply_xslt;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
@@ -17,15 +20,16 @@ import java.io.*;
 /**
  * the util class for XML
  */
-public class XMLUtil {
+@Service
+@RequiredArgsConstructor
+public class ApplyXSLTService {
 
-    private static final String XSLT_FILENAME = "src/main/resources/sak.xslt";
-
+    private final ExtField extField;
     /**
      * @param xmlString the xml string
      * @return xml string with xslt applied
      */
-    public static StringWriter applyXSLT(String xmlString) {
+    public StringWriter applyXSLT(String xmlString) {
         StringWriter stringWriter = new StringWriter();
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -44,12 +48,12 @@ public class XMLUtil {
      * @param stringWriter to store xml string after xslt is applied
      * @throws TransformerException if exception occurred
      */
-    private static void transform(Document doc, StringWriter stringWriter) throws TransformerException {
+    private void transform(Document doc, StringWriter stringWriter) throws TransformerException, IOException {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         // add XSLT in Transformer
-        Transformer transformer = transformerFactory.newTransformer(new StreamSource(new File(XSLT_FILENAME)));
-        transformer.transform(new DOMSource(doc), new StreamResult(stringWriter));
 
+        Transformer transformer = transformerFactory.newTransformer(new StreamSource(extField.getFilePartEmptyArr().getFile()));
+        transformer.transform(new DOMSource(doc), new StreamResult(stringWriter));
     }
 
 }

@@ -5,6 +5,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MyFile {
-    private String fileName;
+public class ResType {
+    private String type;
 }

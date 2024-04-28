@@ -6,5 +6,10 @@ logging:
     console: "%-5level | %-25.25logger{25} | %msg%n"
 
 prod:
-  rows: 4
+  rows: 2
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
