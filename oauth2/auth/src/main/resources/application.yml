@@ -5,7 +5,6 @@ logging:
   pattern:
     console: "%-5level | %-25.25logger{25} | %msg%n"
 
-#
 #spring.output.ansi.enabled: always
 #
 #spring.security.oauth2.authorizationserver.client.client-1.registration.client-id: admin-client

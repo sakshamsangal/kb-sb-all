@@ -52,7 +52,7 @@ public class AuthorizationServerConfig {
                 .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .scope(OidcScopes.PROFILE)
-//                .scope(OidcScopes.OPENID)
+                .scope(OidcScopes.OPENID)
                 .redirectUri("http://localhost:8081/login/oauth2/code/client")
                 .clientSettings(ClientSettings.builder().requireAuthorizationConsent(true).build())
                 .build();

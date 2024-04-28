@@ -8,7 +8,7 @@ spring:
       client:
         provider:
           spring:
-            issuer-uri: http://auth-server:8083
+            issuer-uri: http://127.0.0.1:8083
         registration:
           client:
             client-id: client
@@ -16,7 +16,7 @@ spring:
             client-name: Login with My Auth Server
             provider: spring
             redirect-uri: '{baseUrl}/login/oauth2/code/{registrationId}'
-            scope: profile
+            scope: profile,openid
             authorization-grant-type: authorization_code
 
 
