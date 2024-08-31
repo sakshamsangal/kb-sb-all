@@ -4,12 +4,3 @@ server:
 logging:
   pattern:
     console: "%-5level | %-25.25logger{25} | %msg%n"
-
-prod:
-  rows: 2
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh
