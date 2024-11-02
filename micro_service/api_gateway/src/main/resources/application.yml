@@ -1,28 +1,29 @@
-server:
-  port: 8999
+#logging:
+#  pattern:
+#    console: "%-5level | %-25.25logger{25} | %msg%n"
+#
+#server:
+#  port: 8060
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://localhost:8761/eureka/
 
-eureka:
-  instance:
-    hostname: localhost
+#management:
+#  tracing:
+#    sampling:
+#      probability: 1.0
 
 spring:
   application:
     name: api-gateway
-  cloud:
-    gateway:
-      routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/user/**
-        - id: contact-service
-          uri: lb://contact-service
-          predicates:
-            - Path=/contact/**
-
-logging:
-  pattern:
-    console: "%-5level | %-25.25logger{25} | %msg%n"
-
-prod:
-  rows: 4
+  config:
+    import: "optional:configserver:http://localhost:8088"
+#  cloud:
+#    gateway:
+#      routes:
+#        - id: department-service
+#          uri: lb://department-service
+#          predicates:
+#            - Path=/department/**
