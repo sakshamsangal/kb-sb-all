@@ -6,7 +6,8 @@ product:
   row: 4
 
 fis:
-  baseUrl: https://jsonplaceholder.typicode.com
+#  baseUrl: https://jsonplaceholder.typicode.com
+  baseUrl: https://httpstat.us/500
   postFileUri: /posts
   books: /posts/2
 

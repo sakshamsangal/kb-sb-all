@@ -7,6 +7,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.util.retry.Retry;
+
+import java.time.Duration;
 
 @Service
 @Slf4j
@@ -33,6 +36,9 @@ public class BooksApiService {
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .retrieve()
                 .bodyToMono(String.class)
+                .retryWhen(Retry.fixedDelay(4, Duration.ofSeconds(2))
+                        .doBeforeRetry(s-> log.info("retrying....."))
+                )
                 .block();
     }
 }

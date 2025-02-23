@@ -15,9 +15,7 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	set('springCloudVersion', "2023.0.0")
-}
+
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -33,4 +31,7 @@ dependencyManagement {
 
 tasks.named('test') {
 	useJUnitPlatform()
+	ext {
+		set('springCloudVersion', "2023.0.0")
+	}
 }

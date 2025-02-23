@@ -16,7 +16,7 @@ public class ClientApp {
         return "Welcome to Google !!";
     }
 
-    @GetMapping("/user")
+    @GetMapping("/user1")
     public Principal user(Principal principal) {
         System.out.println("username : " + principal.getName());
         return principal;

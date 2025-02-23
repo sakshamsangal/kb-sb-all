@@ -1,6 +1,6 @@
 server:
   port: 8080
-
+  forward-headers-strategy: NATIVE
 
 spring:
   security:
@@ -19,7 +19,6 @@ spring:
             scope: profile
             authorization-grant-type: authorization_code
 #            client-authentication-method=client_secret_post
-
 
 logging:
   pattern:
